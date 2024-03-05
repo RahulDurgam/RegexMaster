@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegexMaster</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">RegexMaster</h1>
+        <div class="form-container">
+            <form action="/" method="post">
+                <div class="form-group">
+                    <label for="test_string">Test String:</label>
+                    <textarea class="form-control" id="test_string" name="test_string" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="regex_pattern">Regex Pattern:</label>
+                    <input type="text" class="form-control" id="regex_pattern" name="regex_pattern" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        {% if test_string and regex_pattern %}
+            <div class="mt-4">
+                <h2>Results:</h2>
+                <p><strong>Test String:</strong> {{ test_string }}</p>
+                <p><strong>Regex Pattern:</strong> {{ regex_pattern }}</p>
+                <p><strong>Matches:</strong></p>
+                <ul>
+                    {% for match in matches %}
+                        <li>{{ match }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
